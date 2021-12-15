@@ -1,0 +1,25 @@
+/* .nav-tabs{
+    display: none;
+} */
+/* .box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+} */
+.navbar-nav{
+    flex-direction: row;
+    justify-content: center;
+}
+.navbar-nav .nav-link {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+@media only screen and (max-width: 414px) {
+    .boxes{
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 10px;
+    }
+}
