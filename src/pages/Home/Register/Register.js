@@ -4,16 +4,37 @@ import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 import useFirebase from '../../../Hooks/useFirebase';
 import img from '../../../images/dummy.jpg'
+import Swal from 'sweetalert2'
+
 
 const Register = () => {
 
-    const { createAuthUser } = useFirebase();
+    const { errors, createAuthUser } = useFirebase();
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data);
+        
+        if (data.password !== data.password2) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `${errors}`,
+                // footer: '<a href="">Why do I have this issue?</a>'
+            })
+            reset()
+        }
 
-        createAuthUser(data.email, data.password, data.name)
+        else {
+            
+            createAuthUser(data.email, data.password, data.name)
+            Swal.fire(
+                'Good job!',
+                'Find Best Hoodie!',
+                'success'
+            )
+            reset()
+        }
     }
      
     return (
@@ -32,7 +53,7 @@ const Register = () => {
                         
                         <input className="mb-3" type="password" placeholder="Password" {...register("password", { required: true, maxLength: 100 })} /> <br />
                         
-                            <input className="mb-3" type="password" placeholder="re-type Password" {...register("password2", { required: true, maxLength: 100 })} /> <br />
+                            <input className="mb-3" type="password" placeholder="Re-type Password" {...register("password2", { required: true, maxLength: 100 })} /> <br />
 
                         <input className="my-3 border-0 py-2 bask_btn rounded" type="submit" value="Registration"  />
                     </form>

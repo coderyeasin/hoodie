@@ -1,15 +1,12 @@
-import React from 'react';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import hoodieInitialization from '../Firebase/firebase.init';
+import React, { useContext } from 'react';
+import { AuthContext } from '../context/AuthProvider';
 
-hoodieInitialization;
+
 
 const useAuth = () => {
- 
-
-    return {
-        
-    }
+    
+    return useContext(AuthContext)
+    
 };
 
 export default useAuth;

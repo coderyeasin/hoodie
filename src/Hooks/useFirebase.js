@@ -8,6 +8,7 @@ hoodieInitialization();
 const useFirebase = () => {
 
     const [user, setUser] = useState([])
+    const [errors, setErrors] = useState(false) //IC---must
 
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
@@ -16,10 +17,11 @@ const useFirebase = () => {
     const googleProvider = () => {
         signInWithPopup(auth, provider)
             .then(result => {
-            console.log(result.user);
+                console.log(result.user);
+                setErrors('')
             })
             .catch(error => {
-            console.log(error.message);
+                setErrors(error.message);
         })
     }
     /////////////////////////////////with EMAIL and Password///////////////////
@@ -29,22 +31,21 @@ const useFirebase = () => {
           // Signed in 
             // const user = userCredential.user;
             
+            setErrors('')
 
             updateProfile(auth.currentUser, {
                 displayName: name,
               }).then(() => {
-                // Profile updated!
-                // ...
+
               }).catch((error) => {
-                // An error occurred
-                // ...
+                  
               });
 
         })
         .catch((error) => {
-          const errorCode = error.code;
-            const errorMessage = error.message;
+
             console.log(error.message);
+            // setErrors(error.message);
           // ..
         });
     }
@@ -59,15 +60,15 @@ const useFirebase = () => {
         })
         .catch((error) => {
             const errorCode = error.code;
-            const errorMessage = error.message;
             console.log(error.message);
+           setErrors(error.message)
         });
     }
 
 
 //user observe
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
+        const unsubscribed = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user)
                 const uid = user.uid;
@@ -75,8 +76,9 @@ const useFirebase = () => {
             } else {
                 setUser({})
             }
-          });
-    }, [])
+        });
+        return () => unsubscribed;
+    }, [auth])
     
 
 //user signout
@@ -85,12 +87,13 @@ const useFirebase = () => {
         signOut(auth).then(() => {
         // Sign-out successful.
         }).catch((error) => {
-        // An error happened.
+         
         });
     }
 
     return {
         user,
+        errors,
         createAuthUser,
         userSignIn,
         googleProvider,

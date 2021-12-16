@@ -9,15 +9,28 @@ import { Alert, Button, ButtonGroup, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import img from '../../../images/dummy.jpg'
 import useFirebase from '../../../Hooks/useFirebase';
+import Swal from 'sweetalert2'
 
 const Login = () => {
 
-    const { googleProvider, userSignIn } = useFirebase();
+    const { user, errors,googleProvider, userSignIn } = useFirebase();
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
+
         console.log(data)
+        // else {
+        if (!(data.email && data.password)) {
+            Swal.fire(
+                'Good job!',
+                `${errors}`,
+                'success'
+            )
+            reset()            
+        }
         userSignIn(data.email, data.password)
+
+
     };
      
     return (

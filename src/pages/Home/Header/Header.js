@@ -11,6 +11,7 @@ import Register from '../Register/Register';
 import './Header.css';
 import { FaUser } from 'react-icons/fa';
 import useFirebase from '../../../Hooks/useFirebase';
+import useAuth from '../../../Hooks/useAuth';
 
 
 
@@ -19,7 +20,7 @@ const Header = () => {
 
     const [open, setOpen] = useState(false);
 
-    const { user,logOut } = useFirebase();
+    const { user,logOut } = useAuth();
     
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
