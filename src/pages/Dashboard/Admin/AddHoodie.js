@@ -8,7 +8,22 @@ const AddHoodie = () => {
     const { register, reset, handleSubmit } = useForm();
     const onSubmit = data => {
         console.log(data);
-     }
+
+        fetch('http://localhost:5000/hoodies', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body:JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+            if (data.insertedId) {
+                alert('successfully added')
+            }
+        })
+        
+        reset()
+}
+     
     return (
         <Container>
         <Row>
