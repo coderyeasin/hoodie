@@ -6,14 +6,17 @@ import { FaGoogle, FaFacebook, FaGithub,FaTwitter } from 'react-icons/fa';
 // import { Modal } from 'react-responsive-modal';
 
 import { Alert, Button, ButtonGroup, Container, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import img from '../../../images/dummy.jpg'
 import useFirebase from '../../../Hooks/useFirebase';
 import Swal from 'sweetalert2'
+import { useLocation } from 'react-router-dom';
 
 const Login = () => {
 
-    const { user, errors,googleProvider, userSignIn } = useFirebase();
+    const { user, errors, googleProvider, userSignIn } = useFirebase();
+    const location = useLocation();
+    const navigate = useNavigate()
 
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
@@ -28,7 +31,7 @@ const Login = () => {
             )
             reset()            
         }
-        userSignIn(data.email, data.password)
+        userSignIn(data.email, data.password, location, navigate)
 
 
     };
@@ -37,7 +40,7 @@ const Login = () => {
         <div>
 
             
-            <Container>
+            <Container className='pt-5'>
                 <Row className="pt-5">
                     <div className="col-md-6">
                                 <img className="img-fluid" src={img} alt="" />

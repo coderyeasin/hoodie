@@ -10,6 +10,8 @@ import AuthProvider from './context/AuthProvider';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
 import AdminRoute from './pages/Home/AdminRoute/AdminRoute';
 import AddHoodie from './pages/Dashboard/Admin/AddHoodie';
+import PrivateRoute from './pages/Home/PrivateRoute/PrivateRoute';
+import MyOrder from './pages/Dashboard/User/MyOrder';
 
 
 function App() {
@@ -24,16 +26,24 @@ function App() {
 
             <Route path="/addhoodie" element={<AddHoodie></AddHoodie>}></Route>
 
-            <Route path="/privateRoute" element={<AdminRoute>
+            <Route path="/dashboard" element={<PrivateRoute>
               <Dashboard></Dashboard>
-            </AdminRoute>}>
+            </PrivateRoute>
+            }>
           
+              {/* Nested Rout */}
+              <Route path="/dashboard/myorder" element={
+                <PrivateRoute>
+                  <MyOrder></MyOrder>
+                </PrivateRoute>
+              }></Route>
+
             </Route>
 
 
  
-             {/* <Route path="/register" element={<Register></Register>}></Route>
-            <Route path="/login" element={<Login></Login>}></Route>  */}
+             {/* <Route path="/register" element={<Register></Register>}></Route> */}
+            <Route path="/login" element={<Login></Login>}></Route> 
            
         </Routes>
         <Footer />

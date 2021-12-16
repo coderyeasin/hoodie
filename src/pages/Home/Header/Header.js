@@ -91,7 +91,7 @@ const Header = () => {
                     </Navbar.Collapse>
                 </Container>
                 </Navbar>
-            <Banner></Banner>
+        
 
           
         </div>

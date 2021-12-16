@@ -51,12 +51,12 @@ const useFirebase = () => {
     }
 ///////////////////////////sign in////////////////////////
     
-    const userSignIn = (email, password) => {
+    const userSignIn = (email, password, location, navigate) => {
         signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+        .then((result) => {
             // Signed in 
-            const user = userCredential.user;
-            // ...
+            const place = location?.state?.from || '/'
+            navigate(place)
         })
         .catch((error) => {
             const errorCode = error.code;
