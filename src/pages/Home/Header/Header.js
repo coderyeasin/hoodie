@@ -12,6 +12,7 @@ import './Header.css';
 import { FaUser } from 'react-icons/fa';
 import useFirebase from '../../../Hooks/useFirebase';
 import useAuth from '../../../Hooks/useAuth';
+import { Link } from 'react-router-dom';
 
 
 
@@ -56,7 +57,9 @@ const Header = () => {
                             {user?.uid ? 
                                 
                                 <div> 
-                                    <Button onClick={logOut}> {user?.displayName} Logout</Button>
+                                    <Link to="/dashboard">
+                                    <Button> {user?.displayName}<FaUser className='text-dark ms-2' /> </Button>
+                                    </Link>
                                 </div>
                             
                                 : <div>

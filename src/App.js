@@ -12,6 +12,8 @@ import AdminRoute from './pages/Home/AdminRoute/AdminRoute';
 import AddHoodie from './pages/Dashboard/Admin/AddHoodie';
 import PrivateRoute from './pages/Home/PrivateRoute/PrivateRoute';
 import MyOrder from './pages/Dashboard/User/MyOrder';
+import Explore from './pages/Home/Explore/Explore';
+import View from './pages/Home/Hoodies/View';
 
 
 function App() {
@@ -25,6 +27,10 @@ function App() {
             <Route path="/home" element={<Home></Home>}></Route>
 
             <Route path="/addhoodie" element={<AddHoodie></AddHoodie>}></Route>
+
+            <Route path="/explore" element={<Explore></Explore>}></Route>
+
+            <Route path="/details/:id" element={<PrivateRoute><View></View></PrivateRoute>}></Route>
 
             <Route path="/dashboard" element={<PrivateRoute>
               <Dashboard></Dashboard>

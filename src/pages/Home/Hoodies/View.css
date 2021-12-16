@@ -1,0 +1,27 @@
+.modal-content{
+    background: #0d4969da;
+}
+/* .accordion{
+    border: px solid #2d404ada;
+} */
+.accordion-item {
+    color: #fff;
+    background-color: #153b50da;
+    border: none;
+}
+.accordion-button::after {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-left: auto;
+    content: "";
+    background: '+' ;
+    background-repeat: no-repeat;
+    background-size: 1.25rem;
+    transition: transform .2s ease-in-out;
+}
+
+.accordion-button:not(.collapsed)::after {
+    background: '+'!important;
+    transform: rotate(-180deg);
+}
