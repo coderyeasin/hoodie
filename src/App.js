@@ -17,8 +17,9 @@ import View from './pages/Home/Hoodies/View';
 import MakeAdmin from './pages/Dashboard/Admin/MakeAdmin';
 import ManageAllHoodies from './pages/Dashboard/Admin/ManageAllHoodies';
 import ManageAllOrder from './pages/Dashboard/Admin/ManageAllOrder';
-import Feedback from 'react-bootstrap/esm/Feedback';
+import Feedback from './pages/Dashboard/User/Feedback';
 import PayOrder from './pages/Dashboard/User/PayOrder';
+import ManageAllUsers from './pages/Dashboard/Admin/ManageAllUsers';
 
 
 function App() {
@@ -63,6 +64,9 @@ function App() {
             <Route path="/dashboard/makeAdmin" element={<AdminRoute> <MakeAdmin></MakeAdmin>
             </AdminRoute>}></Route>
 
+            <Route path="/dashboard/allUsers" element={<AdminRoute> <ManageAllUsers></ManageAllUsers>
+              </AdminRoute>}></Route>
+              
             <Route path="/dashboard/allHoodies" element={<AdminRoute> <ManageAllHoodies></ManageAllHoodies>
             </AdminRoute>}></Route>
 

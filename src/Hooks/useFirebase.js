@@ -1,5 +1,5 @@
 
-import { getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, updateProfile, signOut } from "firebase/auth";
+import { getAuth,createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, updateProfile,getIdToken, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import hoodieInitialization from '../Firebase/firebase.init';
 
@@ -10,6 +10,7 @@ const useFirebase = () => {
     const [admin, setAdmin] = useState([])
     const [user, setUser] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [token, setToken] = useState('')
 
     const [errors, setErrors] = useState(false) //IC---must
 
@@ -85,8 +86,11 @@ const useFirebase = () => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
             if (user) {               
                 setUser(user)
-                const uid = user.uid;
-                console.log(uid);
+                getIdToken(user)
+                    .then(idToken => {
+                    setToken(idToken);
+                })
+
             } else {
                 setUser({})
             }
@@ -94,6 +98,13 @@ const useFirebase = () => {
         });
         return () => unsubscribed;
     }, [auth])
+    
+////////////////////////admin load------
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user?.email}`)
+            .then(res => res.json())
+        .then(data => setAdmin(data.admin))
+    },[user?.email])
     
 /////////////////////////
     //when user sign up then data will be save db
@@ -125,6 +136,7 @@ const useFirebase = () => {
         errors,
         isLoading,
         admin,
+        token,
         createAuthUser,
         userSignIn,
         googleProvider,

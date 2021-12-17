@@ -55,9 +55,9 @@ const AddHoodie = () => {
                             className="text-light w-100"
                             {...register("type")}>
                             
-                            <option className="text-purple-500" value="single event">Single Event</option>
-                            <option value="full event">Full Event</option>
-                            <option value="mega event">Mega Event</option>
+                            <option className="text-purple-500" value="Large event">Single Event</option>
+                            <option value="Medium">Full Event</option>
+                            <option value="Small">Mega Event</option>
                         </Select>
 
                         <Input placeholder="Price"

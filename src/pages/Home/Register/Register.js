@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import useFirebase from '../../../Hooks/useFirebase';
 import img from '../../../images/dummy.jpg'
 import Swal from 'sweetalert2'
-import { useLocation } from 'react-router-dom';
+
 
 
 const Register = () => {

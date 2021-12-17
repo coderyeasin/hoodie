@@ -6,11 +6,15 @@ import useAuth from '../../../Hooks/useAuth';
 const MyOrder = () => {
 
     const [booked, setBooked] = useState([])
-    const {user} = useAuth()
+    const {user, token} = useAuth()
 
     useEffect(() => {
         const url = `http://localhost:5000/orders?email=${user?.email}`
-        fetch(url)
+        fetch(url, {
+            headers: {
+                'authorization': `Bearer ${token}`,
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 const filter = data.filter(e => e.serviceName)
@@ -39,7 +43,9 @@ const MyOrder = () => {
                 <td>{hoodie?.phone}</td>
                 <td>{hoodie?.address}</td>
                 <td>{hoodie?.status}</td>
-                 <td>  
+                        <td>  
+                        <Button className='text-success bg-light'>Edit</Button>
+                        <Button className='text-danger bg-light'>X</Button>
                 </td>
                 </tr>
             </tbody>

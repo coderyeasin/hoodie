@@ -4,44 +4,38 @@ import Table from 'react-bootstrap/Table'
 import useAuth from '../../../Hooks/useAuth';
 
 
-const ManageAllOrder = () => {
-    const [booked, setBooked] = useState([])
+const ManageAllUsers = () => {
+    const [allUsers, setAllUsers] = useState([])
     const {user} = useAuth()
 
     useEffect(() => {
-        const url = 'http://localhost:5000/allorders/'
+        const url = 'http://localhost:5000/allusers/'
         fetch(url)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                const filter = data.filter(e => e.serviceName && e.phone)
-                setBooked(filter)
+                const filter = data.filter(e => e.email && e.displayName)
+                setAllUsers(filter)
 
             })
     }, [user?.email])
     
     return (
         <div className=''>
-        <h3>All orders {booked.length}</h3>
-        {booked?.map(hoodie => <Table responsive striped bordered hover variant="dark" key={hoodie?._id}>
+        <h3>All orders {allUsers.length}</h3>
+        {allUsers?.map(user => <Table responsive striped bordered hover variant="dark" key={user?._id}>
         <thead>
             <tr>
-            <th>Hoodie Name</th>
+            <th>Name</th>
             <th>Email</th>
-            <th>Phone</th>
-            <th>Address</th>
-            <th>Status</th>
             <th>Actions</th>
 
             </tr>
         </thead>
         <tbody>
             <tr>
-            <td>{hoodie?.serviceName}</td>
-            <td>{hoodie?.email}</td>
-            <td>{hoodie?.phone}</td>
-            <td>{hoodie?.address}</td>
-            <td>{hoodie?.status}</td>
+            <td>{user?.displayName}</td>
+            <td>{user?.email}</td>
                     <td>  
                     <Button className='text-success bg-light'>Edit</Button>
                     <Button className='text-danger bg-light'>X</Button>
@@ -53,4 +47,4 @@ const ManageAllOrder = () => {
     );
 };
 
-export default ManageAllOrder;
+export default ManageAllUsers;
