@@ -13,11 +13,14 @@ const Hoodies = () => {
                 console.log(data)
                 setPlaced(data)
             })
-    },[])
+    }, [])
+    
+
+    
 
     
     return (
-        <div className='text-light'>
+        <div className='text-light' id='hoodies'>
             <h6>Best Hoodie style with two different shapes</h6>
 
             <Container>

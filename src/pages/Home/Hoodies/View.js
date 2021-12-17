@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Accordion,Card, Container, Modal, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import useAuth from '../../../Hooks/useAuth';
-import { Button, H3, Input } from '../../../styles/Elements';
+import { Button, H3, Input, Textarea } from '../../../styles/Elements';
 import './View.css';
+import { useLocation } from 'react-router-dom';
 
 
 const View = () => {
 
     const { id } = useParams();
-    const {user} = useAuth()
+    const { user } = useAuth()
+    let navigate = useNavigate()
+
 
 const [order, setOrder] = useState([])
 const [collect, setCollect] = useState({})
@@ -34,8 +37,29 @@ useEffect(() => {
     
     
     
+    
+    
+    
    const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const onSubmit = data => { console.log(data) };
+    const onSubmit = data => {
+        data.status = "pending"
+        console.log(data)
+        fetch('http://localhost:5000/orders', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body:JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+            if (data.insertedId) {
+                alert('successfully added')
+                navigate('/dashboard')
+            }
+        })
+        
+        reset()
+       
+    };
     
 
     
@@ -84,15 +108,15 @@ useEffect(() => {
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     
          
-                                    <Input className="mb-2 ps-2 w-100 " placeholder='Product Name by selected' defaultValue={collect?.name} {...register("serviceName")} />
+                                    <Input className="mb-2 ps-2 w-100 "  defaultValue={collect?.title} {...register("serviceName")} />
                                     
                                 <Input className="mb-2 ps-2 w-100 " placeholder='Default username' defaultValue={user?.displayName} {...register("name")} />
 
                                 <Input className="mb-2 ps-2 w-100 " pl defaultValue={user?.email} {...register("email")} />
 
-                                <Input className="mb-2  w-100 ps-2" placeholder="Phone" {...register("phone")} />
+                                <Input className="mb-2  w-100 ps-2" placeholder="Phone Number" {...register("phone")} />
 
-                                <Input className="mb-2  w-100 ps-2" placeholder="Give your address" {...register("address")} /> <br />
+                                <Textarea className="mb-2  w-100 ps-2" placeholder="Give your address" {...register("address")} /> <br />
                                         
                                 {errors.exampleRequired && <span>This field is required</span>}
                                 

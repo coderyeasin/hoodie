@@ -1,9 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
+import { Input } from '../../../styles/Elements';
+import Swal from 'sweetalert2'
 
 const MakeAdmin = () => {
+    const [email, setEmail] = useState('')
+    // const [success, setSuccess] = useState(false)
+
+    const handleEmail = (e) => {
+        setEmail(e.target.value)
+    }
+    const handleAdmin = (e) => {
+        // const user = {email}
+        
+        
+        fetch('http://localhost:5000/users/admin', {
+            method: 'PUT',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({email})
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    
+                    // setSuccess(true)
+                    console.log(data)
+                    Swal.fire(
+                        `Congratulations!`,
+                        'Successfully Added Admin!',
+                        'success'
+                    )
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: `This email is invalid`,
+                    })
+                }
+            })
+        
+            e.preventDefault()
+    }
     return (
         <div>
             <h3>Make your Favourite Admin</h3>
+            
+            {/* {success && Swal.fire(
+                    `Congratulations!`,
+                    'Successfully Added Admin!',
+                    'success'
+            )} */}
+
+          
+            <div>
+            <form onSubmit={handleAdmin}>
+                
+                <Input className='w-50 my-3' onBlur={handleEmail} type="email" placeholder='Email' /> <br />
+                <Button type="submit" className='btn btn-outline-info'>MakeAdmin </Button>
+                </form>
+           </div>
         </div>
     );
 };

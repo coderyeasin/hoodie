@@ -21,7 +21,7 @@ const Explore = () => {
 
 
     return (
-        <div className='py-5'>
+        <div className='py-5' >
             <h3>Your id {id}</h3>
             
             <Container>
@@ -38,7 +38,7 @@ const Explore = () => {
                          <Card.Text className='text-success w-100'>
                                     {cloth?.description} <br />
 
-                                    <Link to={`/explore/${cloth?._id}`} className='btn btn-outline-warning'>
+                                    <Link to={`/details/${cloth?._id}`} className='btn btn-outline-warning'>
                                         Confirm Order
                                     </Link>
                                     

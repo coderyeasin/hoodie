@@ -21,7 +21,7 @@ const Header = () => {
 
     const [open, setOpen] = useState(false);
 
-    const { user,logOut } = useAuth();
+    const { user } = useAuth();
     
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
@@ -31,10 +31,10 @@ const Header = () => {
     const onSubmit = data => console.log(data);
      
 
-//     const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false);
 
-//   const handleClose = () => setShow(false);
-//     const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     
     return (
         <div>
@@ -51,22 +51,26 @@ const Header = () => {
                     >
                         <HashLink  className='text-light text-decoration-none mx-2 btn btn-outline-warning' to="/home#">Home</HashLink>
                         <HashLink className='text-light text-decoration-none mx-2 btn btn-outline-warning' to="/home#">Features</HashLink>                           
-                        <HashLink className='text-light text-decoration-none mx-2 btn btn-outline-warning' to="/home#">Hoodies</HashLink>
-                                <HashLink className='text-light text-decoration-none mx-2 btn btn-outline-warning' to="#">Explore</HashLink>
+                        <HashLink className='text-light text-decoration-none mx-2 btn btn-outline-warning' to="/home#hoodies">Hoodies</HashLink>
+                                <HashLink className='text-light text-decoration-none mx-2 btn btn-outline-warning' to="/explore">Explore</HashLink>
                                     
-                            {user?.uid ? 
-                                
-                                <div> 
+                            
+                            {user?.email ?
+                               <div> 
                                     <Link to="/dashboard">
-                                    <Button> {user?.displayName}<FaUser className='text-dark ms-2' /> </Button>
+                                    <Button className='neumophorism border-0'> {user?.displayName} Dashboard </Button>
                                     </Link>
                                 </div>
-                            
-                                : <div>
-                            <button style={{background:'0'}} onClick={onOpenModal}> <FaUser className='text-danger' /> </button>
+                                :
+
+                                <div>
+                                                                    
+                            <button style={{ background: '0' }} onClick={onOpenModal}>
+                             <FaUser className='text-dark ms-2' />
+                            </button>
                                 <Modal classNames="mt-5" open={open} onClose={onCloseModal} center  >
                                 
-                                <Tabs defaultActiveKey="login" id="" className='' >
+                                <Tabs defaultActiveKey="login" id="" className='' onClose={onCloseModal} >
                                         <Tab eventKey="login" title="Login">
                                             <Login> </Login>
                                         </Tab>
@@ -76,8 +80,11 @@ const Header = () => {
                     
                                         </Tabs>
                                 </Modal>
-                                  </div>}
+                            </div>
+                             
 
+                            }
+  
                                 
 
                         {/* <NavDropdown title="Link" id="navbarScrollingDropdown">

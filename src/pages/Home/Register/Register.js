@@ -1,15 +1,18 @@
 import React from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Spinner } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useFirebase from '../../../Hooks/useFirebase';
 import img from '../../../images/dummy.jpg'
 import Swal from 'sweetalert2'
+import { useLocation } from 'react-router-dom';
 
 
 const Register = () => {
 
-    const { errors, createAuthUser } = useFirebase();
+    const { errors, isLoading, createAuthUser } = useFirebase();
+    // const location = useLocation();
+    const navigate = useNavigate()
 
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
@@ -23,11 +26,12 @@ const Register = () => {
                 // footer: '<a href="">Why do I have this issue?</a>'
             })
             reset()
+            return
         }
 
         else {
             
-            createAuthUser(data.email, data.password, data.name)
+            createAuthUser(data.email, data.password, data.name, navigate)
             Swal.fire(
                 'Good job!',
                 'Find Best Hoodie!',
@@ -39,7 +43,14 @@ const Register = () => {
      
     return (
         <div>
-            <Container>
+             {isLoading && <div>
+                <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+            </Spinner>
+            </div>}
+
+            {!isLoading &&
+                <Container>
                 <Row className="pt-5">
                     <div className="col-md-6">
                         <img className="img-fluid" src={img} alt="" />
@@ -61,7 +72,7 @@ const Register = () => {
                    
                     </div>
                 </Row>
-               </Container>
+               </Container>}
         </div>
     );
 };
