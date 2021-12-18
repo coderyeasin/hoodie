@@ -20,7 +20,7 @@ const About = () => {
                         <p className='text-justify'>
 A global platform for personalized clothing and accessories, we are the go-to-place for anyone looking to realize their creative ideas on quality fabrics. We value freedom of expression, whether it’s with your own designs or those made available by our community. T-shirts, sweaters, bags, aprons and a lot more can easily be personalized with images and custom text. Moreover, Spreadshirt is an ideal custom merchandise partner: Emerging YouTube stars and a large number of large companies and brands are among our esteemed customers. Our top-quality prints, custom t-shirts and services will make sure that your business hits it big.
                         </p>
-                        <Button>Know more</Button>
+                        <Button className='mb-3' style={{ background: 'linear-gradient(45deg, #17262c, #0a1c24)'}}>Details</Button>
                     </div>
                     <div className="col-md-6">
                     <Accordion defaultActiveKey="0">

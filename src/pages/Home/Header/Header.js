@@ -49,16 +49,24 @@ const Header = () => {
                         style={{ maxHeight: '100px'}}
                         navbarScroll
                     >
-                        <HashLink  className='text-light text-decoration-none mx-2 btn btn-outline-warning' to="/home#">Home</HashLink>
-                        <HashLink className='text-light text-decoration-none mx-2 btn btn-outline-warning' to="/home#">Features</HashLink>                           
-                        <HashLink className='text-light text-decoration-none mx-2 btn btn-outline-warning' to="/home#hoodies">Hoodies</HashLink>
-                                <HashLink className='text-light text-decoration-none mx-2 btn btn-outline-warning' to="/explore">Explore</HashLink>
+                            <HashLink className='text-light text-decoration-none mx-2' to="/home#">
+                            <Button className='neumophorism' style={{ background: 'linear-gradient(45deg, #17262c, #0a1c24)'}}> Home </Button>
+                            </HashLink>
+                            
+                            <HashLink className='text-light text-decoration-none mx-2 ' to="/home#">
+                            <Button className='neumophorism' style={{ background: 'linear-gradient(45deg, #17262c, #0a1c24)'}}>  Features </Button>
+                            </HashLink>                           
+                            <HashLink className='text-light text-decoration-none mx-2 ' to="/home#hoodies">
+                            <Button className='neumophorism' style={{ background: 'linear-gradient(45deg, #17262c, #0a1c24)'}}>  Hoodies </Button>
+                            </HashLink>
+                            
+                                <HashLink className='text-light text-decoration-none mx-2' to="/explore"><Button className='neumophorism' style={{ background: 'linear-gradient(45deg, #17262c, #0a1c24)'}}> Explore </Button></HashLink>
                                     
                             
                             {user?.email ?
                                <div> 
                                     <Link to="/dashboard">
-                                    <Button className='neumophorism border-0'> {user?.displayName} Dashboard </Button>
+                                    <Button className='neumophorism' style={{ background: 'linear-gradient(45deg, #17262c, #0a1c24)'}}> {user?.displayName} Dashboard </Button>
                                     </Link>
                                 </div>
                                 :
