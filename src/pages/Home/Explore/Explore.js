@@ -14,8 +14,8 @@ const Explore = () => {
         fetch('http://localhost:5000/hoodies')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                setView(data)
+                const hoodie = data.filter(e => e.title && e.facilities && e.description)
+                setView(hoodie)
             })
     },[])
 

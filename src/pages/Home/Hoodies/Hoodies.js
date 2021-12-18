@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { H3 } from '../../../styles/Elements';
 
 
 const Hoodies = () => {
@@ -10,8 +11,8 @@ const Hoodies = () => {
         fetch('http://localhost:5000/hoodies')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                setPlaced(data)
+                const hoodie = data.filter(e => e.title && e.facilities && e.description.slice(0,5))
+                setPlaced(hoodie)
             })
     }, [])
     
@@ -20,13 +21,13 @@ const Hoodies = () => {
 
     
     return (
-        <div className='text-light' id='hoodies'>
-            <h6>Best Hoodie style with two different shapes</h6>
+        <div className='text-light mb-3' id='hoodies'>
+            <H3>Best Hoodies</H3>
 
             <Container>
                 <Row xs={1} md={2} className="">
                
-                    {place?.map(cloth => <div className='d-flex flex-wrap col-md-3 g-3'key={cloth?._id}  >
+                    {place?.map(cloth => <div className='d-flex flex-wrap col-md-4 g-3'key={cloth?._id}  >
                         <Card className='neumophorism' >
                          <Card.Img variant="top" className='image' height="320px" width="350px"  src={cloth?.image} />
                          <Card.Body>

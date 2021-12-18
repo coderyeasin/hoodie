@@ -39,7 +39,7 @@ const Header = () => {
     return (
         <div>
             
-                <Navbar  className="" fixed="top" expand="lg" defaultActiveKey="/home"  style={{ maxHeight: '100px', background: 'linear-gradient(135deg, rgba(30, 39, 44, 0.345), rgba(35, 51, 59, 0.345))'}}>
+                <Navbar  className="mb-3"  fixed="top" expand="lg" defaultActiveKey="/home"  style={{ maxHeight: '100px', background: 'linear-gradient(45deg, #17262c, #0a1c24)'}}>
                 <Container>
                     <Navbar.Brand href="#">Hoodie-Logo</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
@@ -85,16 +85,6 @@ const Header = () => {
 
                             }
   
-                                
-
-                        {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
-                        <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action5">
-                            Something else here
-                        </NavDropdown.Item>
-                        </NavDropdown> */}
 
                     </Nav>
                 

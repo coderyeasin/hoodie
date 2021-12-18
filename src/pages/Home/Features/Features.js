@@ -10,16 +10,16 @@ const Features = () => {
 
             <Row className='gap-3 py-3 align-items-center justify-content-center'>
                 <div className="col-md-4 neumophorism">
-                        <H3>Kids</H3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, tempora vitae autem animi libero esse, non repellat suscipit, eos natus quam velit culpa sit accusantium consequuntur. Fuga autem odio labore?</p>
+                        <H3>MEN'S HOODIES & SWEATS</H3>
+                        <p>Take one for the team in a hoodie or sweat from the boohooMAN on-trend edit. Touch base with the '90s in a bomber jacket where there’s only one rule: the bolder the print, the better! Stay on trend in a sleeveless sweatshirt – perfectly paired with a jersey tank top - or update your look with quilted textures and you’ll be the coolest kid on the block!</p>
                     </div>
                 <div className="col-md-4 neumophorism">
-                        <H3>Women</H3>
-                      <p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae velit nemo, sequi, repudiandae itaque veniam magnam quae soluta exercitationem sapiente harum quo rerum odio quod provident similique delectus voluptatem aliquid?</p>
+                        <H3>WOMEN's HOODIES & SWEATS</H3>
+                      <p>  Sweats and Sweatpants for Women Designed for everyday comfort, our sweats for women are made for adventures out or lounging at home. If you’re searching for sweat tops, explore our hoodies and sweatshirts like our signature Salt & Pepper Original Kanga Hoody and Original Crew Sweatshirt.</p>
                     </div>
                 <div className="col-md-3 neumophorism">
-                        <H3>Man</H3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. In neque omnis architecto dolorem perspiciatis tempora, tenetur eveniet, quam officia corporis deserunt repudiandae corrupti, harum dolore laboriosam qui cupiditate autem. Ex.</p>
+                        <H3>HOODIES</H3>
+                        <p> To keep cozy from head to toe, pair your sweat top with pants and bottoms like sweatpants, trackpants, joggers, sweatshorts and sweat skirts. We even have comfortable sweat dresses like our bestselling Edith Dress. For sweat-on-sweat style, suit up with our matching sweatsuit sets in our ultra-soft fleece or lounge lightly in french terry. Looking for the perfect sweatpant? Find your fit with our Sweatpant Fit Guide. Our sweats are designed in different fits for your comfort; choose from skinny, slim, original and boyfriend.</p>
                     </div>
                 </Row>
             </Container>

@@ -1,15 +1,17 @@
 .background{
-    height: "700px";
+    /* height: "700px"; */
 }
 .carousel-caption {
     position: absolute;
-    top: 40%;
+    /* top: 30%; */
     right: 15%;
     bottom: 1.25rem;
     left: 15%;
     padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
-    color: #c81010;
+    /* padding-bottom: 1.25rem; */
+    color: #ffffff;
+    border-radius: 30px;
+    background: linear-gradient(0deg, rgba(25, 53, 68, 0.759), rgba(2, 17, 24, 0.761));
     text-align: center;
 }
 .carousel-indicators{
@@ -18,7 +20,7 @@
 @media only screen and (min-width:990px){
     .img {
         width: 100%!important;
-        height: 945px;
+        /* height: 945px; */
     }
 }
 

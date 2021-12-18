@@ -3,8 +3,11 @@ import { H3 } from '../../../styles/Elements';
 import Rating from 'react-rating';
 import { Card, Container, Row } from 'react-bootstrap';
 import { FaComment } from 'react-icons/fa';
+import useAuth from '../../../Hooks/useAuth';
 
 const Review = () => {
+
+    const { user } = useAuth()
 
     const [review, setReview] = useState([])
     useEffect(() => {
@@ -17,11 +20,8 @@ const Review = () => {
     },[])
 
     return (
-        <div className='text-light'>
-            <H3>Get user Dynamic feedback with name n rating</H3>
-            
-         
-
+        <div className='text-light mt-5'>
+            <H3 className='my-3'>Testimonial</H3>
 
         <Container>
                 <Row xs={1} md={2} className="">
@@ -30,15 +30,13 @@ const Review = () => {
                         <Card className='neumophorism' >
                          <Card.Body>
                                 <Card.Title className=''>
-  
-                                <Rating
-                                    initialRating={star?.rating}
-                                    emptySymbol="far fa-star"
+                                    <Rating
+                                        initialRating={star?.rating}
+                                        emptySymbol="far fa-star"
                                         fullSymbol="fas fa-star" className="text-warning"
                                         readonly
-                                    >
-                                     </Rating>
-
+                                    />
+                                    <h5>{star?.name}</h5>
                                 </Card.Title>
                             <Card.Text className='text-success'>
                             {star?.feedbacks}

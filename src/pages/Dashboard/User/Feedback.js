@@ -41,6 +41,10 @@ const Feedback = () => {
                             placeholder="Give your star out of 5"
                             {...register("rating", { required: true, maxLength: 100 })} />
                         
+                <Input className="w-100 my-3 visually-hidden"
+                            value={user?.displayName}
+                            {...register("name", { required: true, maxLength: 100 })} />
+                        
 
                         <Button placeholder=""
                             className="w-25 text-light"
