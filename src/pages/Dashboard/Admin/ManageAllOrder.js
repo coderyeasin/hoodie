@@ -9,7 +9,7 @@ const ManageAllOrder = () => {
     const {user} = useAuth()
 
     useEffect(() => {
-        const url = 'http://localhost:5000/allorders/'
+        const url = 'https://warm-falls-65459.herokuapp.com/allorders/'
         fetch(url)
             .then(res => res.json())
             .then(data => {

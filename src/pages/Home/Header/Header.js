@@ -5,14 +5,13 @@ import { HashLink } from 'react-router-hash-link';
 import { useForm } from "react-hook-form";
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
-import Banner from './Banner/Banner';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import './Header.css';
 import { FaUser } from 'react-icons/fa';
-import useFirebase from '../../../Hooks/useFirebase';
 import useAuth from '../../../Hooks/useAuth';
 import { Link } from 'react-router-dom';
+import logo from '../../../images/logo-hoodie.png'
 
 
 
@@ -39,9 +38,11 @@ const Header = () => {
     return (
         <div>
             
-                <Navbar  className="mb-3"  fixed="top" expand="lg" defaultActiveKey="/home"  style={{ maxHeight: '100px', background: 'linear-gradient(45deg, #17262c, #0a1c24)'}}>
+                <Navbar  className="mb-3 py-2"  fixed="top" expand="lg" defaultActiveKey="/home"  style={{ maxHeight: '100px', background: '  linear-gradient(0deg, rgba(25, 53, 68, 1), rgba(2, 17, 24, 0.961))'}}>
                 <Container>
-                    <Navbar.Brand href="#">Hoodie-Logo</Navbar.Brand>
+                    <Navbar.Brand href="#">
+                        <img className='img-fluid w-25' src={logo} alt="" />
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                     <Nav variant="pills"
@@ -71,10 +72,10 @@ const Header = () => {
                                 </div>
                                 :
 
-                                <div>
+                                <div >
                                                                     
-                            <button style={{ background: '0' }} onClick={onOpenModal}>
-                             <FaUser className='text-dark ms-2' />
+                            <button className='btn btn-primary' style={{ background: 'linear-gradient(45deg, #17262c, #0a1c24)'}} onClick={onOpenModal}>
+                             <FaUser className='text-light ms-2'  />
                             </button>
                                 <Modal classNames="mt-5" open={open} onClose={onCloseModal} center  >
                                 

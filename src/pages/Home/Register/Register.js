@@ -3,7 +3,7 @@ import { Container, Row, Spinner } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import useFirebase from '../../../Hooks/useFirebase';
-import img from '../../../images/dummy.jpg'
+import regis from '../../../images/register.png'
 import Swal from 'sweetalert2'
 
 
@@ -53,10 +53,10 @@ const Register = () => {
                 <Container>
                 <Row className="pt-5">
                     <div className="col-md-6">
-                        <img className="img-fluid" src={img} alt="" />
+                        <img className="img-fluid" src={regis} alt="" />
                     </div>
                     <div className="col-md-6">
-                    <h3 style={{color:'#a17154'}} className="mb-3">Please Register</h3>
+                    <h3 style={{color:'#0a1c24'}} className="mb-3">Please Register</h3>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <input className="mb-3" type="text" placeholder="Your name" {...register("name", { required: true, maxLength: 80 })} /> <br />
                         
@@ -66,7 +66,7 @@ const Register = () => {
                         
                             <input className="mb-3" type="password" placeholder="Re-type Password" {...register("password2", { required: true, maxLength: 100 })} /> <br />
 
-                        <input className="my-3 border-0 py-2 bask_btn rounded" type="submit" value="Registration"  />
+                        <input className='my-3 py-2 btn btn-primary' style={{ background: 'linear-gradient(45deg, #17262c, #0a1c24)'}} type="submit" value="Registration"  />
                     </form>
 
                    

@@ -1,0 +1,10 @@
+
+@media only screen and (max-width: 414px) {
+    .items{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+
+    }
+}

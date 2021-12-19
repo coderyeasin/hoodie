@@ -13,7 +13,7 @@ const Feedback = () => {
     const onSubmit = data => {
         // data = user.displayName
 
-        fetch('http://localhost:5000/review', {
+        fetch('https://warm-falls-65459.herokuapp.com/review', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body:JSON.stringify(data)
@@ -48,7 +48,7 @@ const Feedback = () => {
 
                         <Button placeholder=""
                             className="w-25 text-light"
-                            type="submit" value="Add Hoodie" > Review US </Button>
+                            type="submit" value="Add Hoodie" style={{ background: 'linear-gradient(45deg, #17262c, #0a1c24)'}}> Review US </Button>
                         
             </form>
         </div>

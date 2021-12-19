@@ -7,7 +7,7 @@ import { FaGoogle, FaFacebook, FaGithub,FaTwitter } from 'react-icons/fa';
 
 import { Alert, Button, ButtonGroup, Container, Row, Spinner } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import img from '../../../images/dummy.jpg'
+import login from '../../../images/login.png'
 import Swal from 'sweetalert2'
 import { useLocation } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
@@ -41,10 +41,10 @@ const Login = () => {
                
                     <Row className="pt-5">
                         <div className="col-md-6">
-                            <img className="img-fluid" src={img} alt="" />
+                            <img className="img-fluid" src={login} alt="" />
                         </div>
                         <div className="col-md-6">
-                            <h3 style={{ color: '#a17154' }} className="mb-3">Please Login</h3>
+                            <h3 style={{ color: '#0a1c24' }} className="mb-3">Please Login</h3>
 
                             <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -52,19 +52,19 @@ const Login = () => {
                 
                                 <input className="mb-3" type="password" placeholder="Password" {...register("password", { required: true, maxLength: 100 })} /> <br />
 
-                                <input className="my-3 border-0 p-2 bask_btn rounded" type="submit" value="Login" /> <br />
+                                <input className='my-3 py-2 btn btn-primary' style={{ background: 'linear-gradient(45deg, #17262c, #0a1c24)'}} type="submit" value="Login" /> <br />
 
                             </form>
-                            <p className="text-center my-3 fw-bold" style={{ color: '#a17154' }}>USING SOCIAL MEDIA</p>
+                            <p className="text-center my-3 fw-bold" style={{ color: '#0a1c24' }}>USING SOCIAL MEDIA</p>
                 
-                            <ButtonGroup>
-                                <Button onClick={handleGoogle} className="bask_btn border-0"> <FaGoogle /> Google</Button>
+                            <ButtonGroup className='my-3 py-2 btn btn-primary' style={{ background: 'linear-gradient(45deg, #17262c, #0a1c24)'}}>
+                                <Button onClick={handleGoogle}  style={{ background: 'linear-gradient(45deg, #17262c, #0a1c24)'}}> <FaGoogle /> Google</Button>
             
-                                <Button className="bask_btn border-0"> <FaFacebook /> Facebook</Button>
+                                <Button style={{ background: 'linear-gradient(45deg, #17262c, #0a1c24)'}}> <FaFacebook /> Facebook</Button>
                 
-                                <Button className="bask_btn border-0"> <FaGithub /> Github</Button>
+                                <Button style={{ background: 'linear-gradient(45deg, #17262c, #0a1c24)'}}> <FaGithub /> Github</Button>
                 
-                                <Button className="bask_btn border-0"> <FaTwitter /> Twitter</Button>
+                                <Button style={{ background: 'linear-gradient(45deg, #17262c, #0a1c24)'}}> <FaTwitter /> Twitter</Button>
 
                             </ButtonGroup>
                         </div>

@@ -9,7 +9,7 @@ const ManageAllUsers = () => {
     const {user} = useAuth()
 
     useEffect(() => {
-        const url = 'http://localhost:5000/allusers/'
+        const url = 'https://warm-falls-65459.herokuapp.com/allusers/'
         fetch(url)
             .then(res => res.json())
             .then(data => {

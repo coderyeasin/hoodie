@@ -27,7 +27,7 @@ const Dashboard = () => {
                         
                             <Link className="fs-5 text-light text-decoration-none" to="/dashboard/feedback"> <FaRegEdit className="mx-2 fs-5" /> Review</Link>  <br />
                         
-                            <Link className="fs-5 text-light text-decoration-none" to="/dashboard/payment/:id"> <FaDollarSign className="mx-2 fs-5" /> Payment</Link>  <br />
+                            <Link className="fs-5 text-light text-decoration-none" to="/dashboard/payment"> <FaDollarSign className="mx-2 fs-5" /> Payment</Link>  <br />
                         
                             <Link className="fs-5 text-light text-decoration-none" to=""> <FaUserAlt className="mx-2 fs-5" /> Profile</Link>   <br />
 
@@ -41,17 +41,17 @@ const Dashboard = () => {
                 
                         <div className="mx-5 py-3 d-flex flex-column " style={{ textAlign: 'justify' }}>
                             <h3 className="text-center text-xl py-5">{user?.displayName} Panel</h3>
-                            <Link className=" fs-5 text-light text-decoration-none" to="/dashboard/addhoodie"><FaRegEdit className="mx-2 fs-5" /> Add Events</Link> <br />
+                            <Link className=" fs-5 text-light text-decoration-none" to="/dashboard/addhoodie"><FaRegEdit className="mx-2 fs-5" /> Add Hoodie</Link> <br />
                         
                             <Link className=" fs-5 text-light text-decoration-none" to="/dashboard/makeAdmin"> <FaUserSecret className="mx-2 fs-5" /> Make Admin</Link> <br />
                         
-                            <Link className=" fs-5 text-light text-decoration-none" to="/dashboard/allUsers"> <FaRegSun className="mx-2 fs-5" /> Manage All users </Link> <br />
+                            <Link className=" fs-5 text-light text-decoration-none" to="/dashboard/allUsers"> <FaWindowRestore className="mx-2 fs-5" /> Manage All users </Link> <br />
                         
                             <Link className=" fs-5 text-light text-decoration-none" to="/dashboard/allHoodies"> <FaRegCalendarPlus className="mx-2 fs-5" /> Manage All Hoodie </Link> <br />
 
                             <Link className=" fs-5 text-light text-decoration-none" to="/dashboard/allOrders"> <FaRegCalendarAlt className="mx-2 fs-5" /> Manage All Orders </Link> <br />
              
-                            <Link className=" fs-5 text-light text-decoration-none" to=""> <FaWindowRestore className="mx-2 fs-5" /> Settings</Link> <br />
+                            <Link className=" fs-5 text-light text-decoration-none" to=""> <FaRegSun className="mx-2 fs-5" /> Settings</Link> <br />
                     
                             <Link className="fs-5 text-light text-decoration-none mb-3" onClick={logOut} to=""> <FaSignOutAlt className="mx-2 fs-5" /> Logout</Link>
 
@@ -61,8 +61,8 @@ const Dashboard = () => {
                 
             <div className="col-md-9">
                
-                    <h3 className="my-3"> Welcome Mr. Dashbord </h3> 
-                    {/* {admin ? <AddHoodie></AddHoodie> : <MyOrder></MyOrder>} */}
+                    <h3 className="my-3"> Welcome Mr. {user?.email ? user?.displayName : "Dashboard"} </h3> 
+
                     
                  <Outlet />
            </div>

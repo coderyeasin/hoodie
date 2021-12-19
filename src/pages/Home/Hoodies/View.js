@@ -22,7 +22,7 @@ const [collect, setCollect] = useState({})
 const [show, setShow] = useState(false);
 
 useEffect(() => {
-    fetch('http://localhost:5000/hoodies')
+    fetch('https://warm-falls-65459.herokuapp.com/hoodies')
         .then(res => res.json())
         .then(data => {
             console.log(data)
@@ -44,7 +44,7 @@ useEffect(() => {
     const onSubmit = data => {
         data.status = "pending"
         console.log(data)
-        fetch('http://localhost:5000/orders', {
+        fetch('https://warm-falls-65459.herokuapp.com/orders', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body:JSON.stringify(data)

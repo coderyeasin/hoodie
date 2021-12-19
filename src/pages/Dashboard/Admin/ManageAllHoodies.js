@@ -6,7 +6,7 @@ const ManageAllHoodies = () => {
     const [hoodies, setHoodies] = useState([])
 
     useEffect(() => {
-        const url = `http://localhost:5000/hoodies`
+        const url = `https://warm-falls-65459.herokuapp.com/hoodies`
         fetch(url)
             .then(res => res.json())
             .then(data => {

@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Container, Row } from 'react-bootstrap';
+import { Card, Container, Row, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../Hooks/useAuth';
 import { H3 } from '../../../styles/Elements';
-
+import './Hoodies.css';
 
 const Hoodies = () => {
 
     const [place, setPlaced] = useState([])
+
+    const {isLoading}= useAuth()
+
     useEffect(() => {
-        fetch('http://localhost:5000/hoodies')
+        fetch('https://warm-falls-65459.herokuapp.com/hoodies')
             .then(res => res.json())
             .then(data => {
-                const hoodie = data.filter(e => e.title && e.facilities && e.description.slice(0,5))
-                setPlaced(hoodie)
+                const hoodie = data.filter(e => e.title && e.facilities && e.description)
+                setPlaced(hoodie.slice(7, 13))
             })
     }, [])
     
@@ -21,34 +25,36 @@ const Hoodies = () => {
 
     
     return (
-        <div className='text-light mb-3' id='hoodies'>
-            <H3>Best Hoodies</H3>
+        <div className='text-light' id='hoodies'>
+               {isLoading && <div>
+                <Spinner animation="border" role="status">
+            </Spinner>
+            </div>}
 
-            <Container>
+            <H3>Choose Best Qualities Hoodies</H3>
+
+            {!isLoading &&  <Container  className='my-5'>
                 <Row xs={1} md={2} className="">
                
                     {place?.map(cloth => <div className='d-flex flex-wrap col-md-4 g-3'key={cloth?._id}  >
-                        <Card className='neumophorism' >
-                         <Card.Img variant="top" className='image' height="320px" width="350px"  src={cloth?.image} />
-                         <Card.Body>
-                                <Card.Title className='text-success'>{cloth?.title} </Card.Title>
-                         <Card.Text className='text-success'>
-                            {cloth?.description}
-                         </Card.Text>
-                         </Card.Body>
-                         <Card.Footer>
-                                <small className="text-muted">Button with hover</small>
-                                <Link to={`/details/${cloth?._id}`} className='btn btn-outline-warning'>
-                                        Buy
+                        <Card className='neumophorism cool-card' >
+                            <Card.Img variant="top" className='image' height="320px" width="350px" src={cloth?.image} />
+                            
+                         <Card.Body className='cool-btn'>
+                                <Card.Title className='text-light fs-4'>{cloth?.title} </Card.Title> <br />
+
+                                <Link to={`/details/${cloth?._id}`} className='details-btn fs-5'>
+                                        Order 
                                 </Link>
-                         </Card.Footer>
+                                
+                         </Card.Body>
                      </Card>
                     
                      </div>
                     )}
                   
                 </Row>
-            </Container>
+            </Container>}
         </div>
     );
 };

@@ -101,7 +101,7 @@ const useFirebase = () => {
     
 ////////////////////////admin load------
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user?.email}`)
+        fetch(`https://warm-falls-65459.herokuapp.com/users/${user?.email}`)
             .then(res => res.json())
         .then(data => setAdmin(data.admin))
     },[user?.email])
@@ -110,7 +110,7 @@ const useFirebase = () => {
     //when user sign up then data will be save db
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName } //property + parameter same hole emon use kora zay
-        fetch('http://localhost:5000/users', {
+        fetch('https://warm-falls-65459.herokuapp.com/users', {
             method: method,
             headers: { 'content-type': 'application/json' },
             body:JSON.stringify(user)
