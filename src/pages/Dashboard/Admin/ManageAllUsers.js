@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table'
 import useAuth from '../../../Hooks/useAuth';
 
 
 const ManageAllUsers = () => {
+
     const [allUsers, setAllUsers] = useState([])
-    const {user} = useAuth()
+
+    const {user, isLoading} = useAuth()
 
     useEffect(() => {
         const url = 'https://warm-falls-65459.herokuapp.com/allusers/'
@@ -19,11 +21,38 @@ const ManageAllUsers = () => {
 
             })
     }, [user?.email])
+
+
+//DELETE
+    const handleRemove = id => {
+        const process = window.confirm('Are you sure?')
+        if (process) {
+            fetch(`https://warm-falls-65459.herokuapp.com/users/${id}`, {
+                method:'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            alert('deleted successfully')
+                            const restData = data.filter(e => e._id !== id)
+                            setAllUsers(restData)
+                        }
+                })
+        }
+}
     
     return (
         <div className=''>
-        <h3>All orders {allUsers.length}</h3>
-        {allUsers?.map(user => <Table responsive striped bordered hover variant="dark" key={user?._id}>
+
+{/* {isLoading && <div>
+                <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+            </Spinner>
+            </div>} */}
+
+        <h3>All Users {allUsers.length}</h3>
+            {allUsers?.map(user =>
+                <Table responsive striped bordered hover variant="dark" key={user?._id}>
         <thead>
             <tr>
             <th>Name</th>
@@ -38,11 +67,12 @@ const ManageAllUsers = () => {
             <td>{user?.email}</td>
                     <td>  
                     <Button className='text-success bg-light'>Edit</Button>
-                    <Button className='text-danger bg-light'>X</Button>
+                    <Button onClick={()=>handleRemove(user?._id)} className='text-danger bg-light'>X</Button>
             </td>
             </tr>
         </tbody>
-</Table>)}
+                </Table>)}
+            
     </div>
     );
 };

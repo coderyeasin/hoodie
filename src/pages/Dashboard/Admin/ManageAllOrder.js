@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table'
+import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 
 
@@ -43,7 +44,10 @@ const ManageAllOrder = () => {
             <td>{hoodie?.address}</td>
             <td>{hoodie?.status}</td>
                     <td>  
-                    <Button className='text-success bg-light'>Edit</Button>
+                        <Link to={`/dashboard/upOrders/${hoodie?._id}`}>
+                        <Button className='text-success bg-light'>Edit</Button>
+                        </Link>
+                    
                     <Button className='text-danger bg-light'>X</Button>
             </td>
             </tr>

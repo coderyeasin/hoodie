@@ -20,6 +20,7 @@ import ManageAllOrder from './pages/Dashboard/Admin/ManageAllOrder';
 import Feedback from './pages/Dashboard/User/Feedback';
 import PayOrder from './pages/Dashboard/User/PayOrder';
 import ManageAllUsers from './pages/Dashboard/Admin/ManageAllUsers';
+import UpdateOrder from './pages/Dashboard/Admin/UpdateOrder';
 
 
 function App() {
@@ -71,6 +72,10 @@ function App() {
             </AdminRoute>}></Route>
 
             <Route path="/dashboard/allOrders" element={<AdminRoute> <ManageAllOrder></ManageAllOrder>
+            </AdminRoute>}></Route>
+
+              <Route path="/dashboard/upOrders/:id" element={<AdminRoute> 
+                <UpdateOrder></UpdateOrder>
             </AdminRoute>}></Route>
 
 
