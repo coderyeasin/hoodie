@@ -8,7 +8,7 @@ import { H3 } from '../../../../styles/Elements';
 import './Banner.css'
 
 const Banner = () => {
-    const { hoodie, categories } = useHoddies();
+    const { hoodie, categories, loader } = useHoddies();
     return (
       <div className="">
         <Container className="mb-5 py-3">

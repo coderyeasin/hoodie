@@ -4,6 +4,9 @@ const useHoddies = () => {
        const [place, setPlaced] = useState([]);
     const [hoodie, setHoodie] = useState([])
     const [categories, setCategories] = useState([])
+    
+    const [loader, setLoader] = useState(true)
+
 
        useEffect(() => {
          fetch("https://warm-falls-65459.herokuapp.com/hoodies")
@@ -15,14 +18,14 @@ const useHoddies = () => {
                setPlaced(hoodie.slice(0, 6));
                setHoodie(hoodie.slice(0, 3));
                setCategories(hoodie.slice(0, 3));
-               
+               setLoader(hoodie)
            });
        }, []);
     
     return {
       place,
       hoodie,
-      categories,
+      categories,loader,
     };
 };
 
