@@ -86,7 +86,7 @@ const Banner = () => {
                 </div>
                 <div className=" neumophorism">
                   <H3>Categories</H3>
-                  {hoodie.map((e) => {
+                  {categories.map((e) => {
                     return (
                       <div key={e.id} style={{ padding: "3px" }}>
                         <span
