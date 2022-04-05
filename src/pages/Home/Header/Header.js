@@ -44,7 +44,7 @@ const Header = () => {
           defaultActiveKey="/home"
           style={{
             maxHeight: "100px",
-            borderBottom: "3px solid #135cd1",
+            borderBottom: "2px solid #135cd1",
             background:
               "  linear-gradient(0deg, rgba(25, 53, 68, 1), rgba(2, 17, 24, 0.961))",
           }}

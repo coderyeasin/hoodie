@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel, Container, Row } from 'react-bootstrap';
+import useHoddies from '../../../../Hooks/useHoddies';
 import cover from'../../../../images/slide/slide1-min.jpg'
 import cover1 from'../../../../images/slide/slide2-min.jpg'
 import cover2 from'../../../../images/slide/slide3.jpg'
@@ -7,6 +8,7 @@ import { H3 } from '../../../../styles/Elements';
 import './Banner.css'
 
 const Banner = () => {
+    const { hoodie, categories } = useHoddies();
     return (
       <div className="">
         <Container className="mb-5 py-3">
@@ -63,10 +65,24 @@ const Banner = () => {
                 </Carousel.Item>
               </Carousel>
             </div>
-            <div className="col-md-4 text-light ">
-              <Row className="gap-3 py-3 align-items-center justify-content-center">
-                <div className="neumophorism">
+            <div className="col-md-4" style={{ color: "#c8ced4" }}>
+              <Row className="gap-3 py-3">
+                <div className="neumophorism py-3">
                   <H3>Latest Hoodies</H3>
+                  {hoodie.map((e) => {
+                    return (
+                      <div key={e.id} style={{ padding: "3px" }}>
+                        <span
+                          style={{
+                            borderBottom: "2px solid #135cd1",
+                            padding: "5px 0px 0px 0px",
+                          }}
+                        >
+                          {e?.title}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
                 <div className=" neumophorism">
                   <H3>Categories</H3>

@@ -8,11 +8,7 @@ import './Hoodies.css';
 
 const Hoodies = () => {
     const {place} = useHoddies()
-
-    const {isLoading}= useAuth()
-
-    
-
+    const { isLoading } = useAuth()    
     
     return (
         <div className='text-light' id='hoodies'>
