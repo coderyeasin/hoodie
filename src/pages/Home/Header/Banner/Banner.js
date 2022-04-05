@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel, Container, Row } from 'react-bootstrap';
+import useAuth from '../../../../Hooks/useAuth';
 import useHoddies from '../../../../Hooks/useHoddies';
 import cover from'../../../../images/slide/slide1-min.jpg'
 import cover1 from'../../../../images/slide/slide2-min.jpg'
@@ -8,7 +9,8 @@ import { H3 } from '../../../../styles/Elements';
 import './Banner.css'
 
 const Banner = () => {
-    const { hoodie, categories, loader } = useHoddies();
+    const { hoodie, categories } = useHoddies();
+    const {isLoading} = useAuth()
     return (
       <div className="">
         <Container className="mb-5 py-3">
@@ -69,37 +71,56 @@ const Banner = () => {
               <Row className="gap-3 py-3">
                 <div className="neumophorism py-3">
                   <H3>Latest Hoodies</H3>
-                  {hoodie.map((e) => {
-                    return (
-                      <div key={e.id} style={{ padding: "3px" }}>
-                        <span
-                          style={{
-                            borderBottom: "2px solid #135cd1",
-                            padding: "5px 0px 0px 0px",
-                          }}
-                        >
-                          {e?.title}
-                        </span>
-                      </div>
-                    );
-                  })}
+                  {isLoading && (
+                    <div className="spinner-border" role="status">
+                      <span className="sr-only">Loading...</span>
+                    </div>
+                  )}
+                  {!isLoading && (
+                    <>
+                      {" "}
+                      {hoodie.map((e) => {
+                        return (
+                          <div key={e._id} style={{ padding: "3px" }}>
+                            <span
+                              style={{
+                                borderBottom: "2px solid #135cd1",
+                                padding: "5px 0px 0px 0px",
+                              }}
+                            >
+                              {e?.title}
+                            </span>
+                          </div>
+                        );
+                      })}{" "}
+                    </>
+                  )}
                 </div>
                 <div className=" neumophorism">
+                  {isLoading && (
+                    <div class="spinner-border" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  )}
                   <H3>Categories</H3>
-                  {categories.map((e) => {
-                    return (
-                      <div key={e.id} style={{ padding: "3px" }}>
-                        <span
-                          style={{
-                            borderBottom: "2px solid #135cd1",
-                            padding: "5px 0px 0px 0px",
-                          }}
-                        >
-                          {e?.facilities}
-                        </span>
-                      </div>
-                    );
-                  })}
+                  {!isLoading && (
+                    <>
+                      {categories.map((e) => {
+                        return (
+                          <div key={e._id} style={{ padding: "3px" }}>
+                            <span
+                              style={{
+                                borderBottom: "2px solid #135cd1",
+                                padding: "5px 0px 0px 0px",
+                              }}
+                            >
+                              {e?.facilities}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </>
+                  )}
                 </div>
                 <div className=" neumophorism">
                   <H3>KIDS</H3>
