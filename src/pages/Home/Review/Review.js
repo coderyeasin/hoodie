@@ -21,47 +21,37 @@ const Review = () => {
     },[])
 
     return (
-        <div className='text-light my-5'>
-
-        <Container>           
-                <Row xs={1}>
-
-                    <Carousel >
-                                        
-                            {review?.map(star => <Carousel.Item > <div className=''key={star?._id}  >
-                                        <Card className='neumophorism' >
-                                        <Card.Body className='p-3'>
-                                                <Card.Title className=''>
-                                                    <Rating
-                                                        initialRating={star?.rating}
-                                                        emptySymbol="far fa-star"
-                                                        fullSymbol="fas fa-star" className="text-warning"
-                                                        readonly
-                                                    />
-                                                    <h6 className='my-3'>{star?.name}</h6>
-                                                </Card.Title>
-                                            <Card.Text className='text-success'>
-                                            {star?.feedbacks}
-                                                    
-                                            </Card.Text>
-                                        </Card.Body>
-                                    </Card>
-                                    
-                               </div>
-                            </Carousel.Item>
-                             )}
-                    
-                 </Carousel>
-               
-                  
-                    
-            </Row>
-
-            </Container>
-
-
-
-        </div>
+      <div className="text-light my-5">
+        <Container>
+          <Row xs={1}>
+            <Carousel>
+              {review?.map((star) => (
+                <Carousel.Item>
+                  <div className="" key={star?._id}>
+                    <Card className="neumophorism" style={{ width: "48rem", height:'20rem', margin:'0px auto', padding:'5px 0px' }}>
+                      <Card.Body className="p-3 d-flex flex-column justify-content-center align-items-center" >
+                        <Card.Title className="">
+                          <Rating
+                            initialRating={star?.rating}
+                            emptySymbol="far fa-star"
+                            fullSymbol="fas fa-star"
+                            className="text-warning"
+                            readonly
+                          />
+                          <h6 className="my-3">{star?.name}</h6>
+                        </Card.Title>
+                        <Card.Text className="text-success">
+                          {star?.feedbacks}
+                        </Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </div>
+                </Carousel.Item>
+              ))}
+            </Carousel>
+          </Row>
+        </Container>
+      </div>
     );
 };
 
