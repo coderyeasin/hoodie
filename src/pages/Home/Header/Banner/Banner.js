@@ -8,8 +8,8 @@ import './Banner.css'
 
 const Banner = () => {
     return (
-        <div>
-            <Container className='my-5 py-3'>
+        <div className=''>
+            <Container className='mb-5 py-3'>
                 <Row className=' d-flex justify-content-center align-items-center'>
                     <div className="slide col-md-8 neumophorism">
                     <Carousel>
