@@ -86,16 +86,20 @@ const Banner = () => {
                 </div>
                 <div className=" neumophorism">
                   <H3>Categories</H3>
-                  <p
-                    className="p-3"
-                    style={{ lineHeight: "30px", textAlign: "justify" }}
-                  >
-                    Whenever the crisp air of fall and winter arrives, coats and
-                    jackets are needed for protection from the cold. Luckily,
-                    there is enough variety to allow you to select one for a
-                    wide range of factors. Some people choose to purchase one
-                    that offers the most convenience .
-                  </p>
+                  {hoodie.map((e) => {
+                    return (
+                      <div key={e.id} style={{ padding: "3px" }}>
+                        <span
+                          style={{
+                            borderBottom: "2px solid #135cd1",
+                            padding: "5px 0px 0px 0px",
+                          }}
+                        >
+                          {e?.facilities}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
                 <div className=" neumophorism">
                   <H3>KIDS</H3>
