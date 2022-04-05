@@ -71,8 +71,8 @@ const Header = () => {
                       background: "linear-gradient(45deg, #17262c, #0a1c24)",
                     }}
                   >
-                    {" "}
-                    Home{" "}
+                   
+                    Home
                   </Button>
                 </HashLink>
 
@@ -85,9 +85,8 @@ const Header = () => {
                     style={{
                       background: "linear-gradient(45deg, #17262c, #0a1c24)",
                     }}
-                  >
-                    {" "}
-                    Features{" "}
+                  >           
+                    Features
                   </Button>
                 </HashLink>
                 <HashLink

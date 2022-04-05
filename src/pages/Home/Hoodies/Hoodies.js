@@ -2,24 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Card, Container, Row, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
+import useHoddies from '../../../Hooks/useHoddies';
 import { H3 } from '../../../styles/Elements';
 import './Hoodies.css';
 
 const Hoodies = () => {
-
-    const [place, setPlaced] = useState([])
+    const {place} = useHoddies()
 
     const {isLoading}= useAuth()
-
-    useEffect(() => {
-        fetch('https://warm-falls-65459.herokuapp.com/hoodies')
-            .then(res => res.json())
-            .then(data => {
-                const hoodie = data.filter(e => e.title && e.facilities && e.description)
-                setPlaced(hoodie.slice(7, 13))
-            })
-    }, [])
-    
 
     
 
