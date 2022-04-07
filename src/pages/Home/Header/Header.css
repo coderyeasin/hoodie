@@ -15,7 +15,12 @@
     padding-right: 10px;
     padding-left: 10px;
 }
-
+.react-responsive-modal-modal {
+    background-color: rgba(15, 37, 49, 0.7);
+}
+.react-responsive-modal-closeButton {
+        background-color: #235167;
+}
 @media only screen and (max-width: 414px) {
     .boxes{
         flex-direction: column;

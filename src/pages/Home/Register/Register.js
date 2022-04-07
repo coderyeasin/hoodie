@@ -58,7 +58,7 @@ const Register = () => {
                 <img className="img-fluid" src={regis} alt="" />
               </div>
               <div className="col-md-6">
-                <h3 style={{ color: "#0a1c24" }} className="mb-3">
+                <h3 style={{ color: "#fff" }} className="mb-3">
                   Please Register
                 </h3>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -66,9 +66,10 @@ const Register = () => {
                     style={{
                       border: "none",
                       outline: "none",
-                      borderBottom: "2px solid #1e272c",
+                      background: "none",
+                      borderBottom: "2px solid #fff",
                     }}
-                    className="mb-3"
+                    className="mb-3  pb-2"
                     type="text"
                     placeholder="Your name"
                     {...register("name", { required: true, maxLength: 80 })}
@@ -78,9 +79,10 @@ const Register = () => {
                     style={{
                       border: "none",
                       outline: "none",
-                      borderBottom: "2px solid #1e272c",
+                      background: "none",
+                      borderBottom: "2px solid #fff",
                     }}
-                    className="mb-3"
+                    className="mb-3  pb-2"
                     type="email"
                     placeholder="Email"
                     {...register("email", {
@@ -93,9 +95,10 @@ const Register = () => {
                     style={{
                       border: "none",
                       outline: "none",
-                      borderBottom: "2px solid #1e272c",
+                      background: "none",
+                      borderBottom: "2px solid #fff",
                     }}
-                    className="mb-3"
+                    className="mb-3  pb-2"
                     type="password"
                     placeholder="Password"
                     {...register("password", {
@@ -108,9 +111,10 @@ const Register = () => {
                     style={{
                       border: "none",
                       outline: "none",
-                      borderBottom: "2px solid #1e272c",
+                      background: "none",
+                      borderBottom: "2px solid #fff",
                     }}
-                    className="mb-3"
+                    className="mb-3 pb-2"
                     type="password"
                     placeholder="Re-type Password"
                     {...register("password2", {

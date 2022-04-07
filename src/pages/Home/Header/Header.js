@@ -71,7 +71,6 @@ const Header = () => {
                       background: "linear-gradient(45deg, #17262c, #0a1c24)",
                     }}
                   >
-                   
                     Home
                   </Button>
                 </HashLink>
@@ -85,7 +84,7 @@ const Header = () => {
                     style={{
                       background: "linear-gradient(45deg, #17262c, #0a1c24)",
                     }}
-                  >           
+                  >
                     Features
                   </Button>
                 </HashLink>
@@ -146,17 +145,13 @@ const Header = () => {
                       <FaUser className="text-light ms-2" />
                     </button>
                     <Modal
-                      classNames="mt-5"
+                   
+                      classNames="mt-5 opacity-50 b" 
                       open={open}
                       onClose={onCloseModal}
                       center
                     >
-                      <Tabs
-                        defaultActiveKey="login"
-                        id=""
-                        className=""
-                        onClose={onCloseModal}
-                      >
+                      <Tabs defaultActiveKey="login" onClose={onCloseModal}>
                         <Tab eventKey="login" title="Login">
                           <Login> </Login>
                         </Tab>

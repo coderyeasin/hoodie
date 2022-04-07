@@ -40,17 +40,18 @@ const Login = () => {
                 <img className="img-fluid" src={login} alt="" />
               </div>
               <div className="col-md-6">
-                <h3 style={{ color: "#0a1c24" }} className="mb-3">
+                <h3 style={{ color: "#fff" }} className="mb-3">
                   Please Login
                 </h3>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <input
-                    className="mb-3"
+                    className="mb-3  pb-2"
                     style={{
                       border: "none",
                       outline: "none",
-                      borderBottom: "2px solid #1e272c",
+                      background: "none",
+                      borderBottom: "2px solid #fff",
                     }}
                     type="email"
                     placeholder="Email"
@@ -61,9 +62,10 @@ const Login = () => {
                     style={{
                       border: "none",
                       outline: "none",
-                      borderBottom: "2px solid #1e272c",
+                      background: "none",
+                      borderBottom: "2px solid #fff",
                     }}
-                    className="mb-3"
+                    className="mb-3  pb-2"
                     type="password"
                     placeholder="Password"
                     {...register("password", {
