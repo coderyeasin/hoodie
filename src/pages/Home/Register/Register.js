@@ -42,38 +42,97 @@ const Register = () => {
     }
      
     return (
-        <div>
-             {isLoading && <div>
-                <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
+      <div>
+        {isLoading && (
+          <div>
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
             </Spinner>
-            </div>}
+          </div>
+        )}
 
-            {!isLoading &&
-                <Container>
-                <Row className="pt-5">
-                    <div className="col-md-6">
-                        <img className="img-fluid" src={regis} alt="" />
-                    </div>
-                    <div className="col-md-6">
-                    <h3 style={{color:'#0a1c24'}} className="mb-3">Please Register</h3>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <input className="mb-3" type="text" placeholder="Your name" {...register("name", { required: true, maxLength: 80 })} /> <br />
-                        
-                        <input className="mb-3" type="email" placeholder="Email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} /> <br />
-                        
-                        <input className="mb-3" type="password" placeholder="Password" {...register("password", { required: true, maxLength: 100 })} /> <br />
-                        
-                            <input className="mb-3" type="password" placeholder="Re-type Password" {...register("password2", { required: true, maxLength: 100 })} /> <br />
-
-                        <input className='my-3 py-2 btn btn-primary' style={{ background: 'linear-gradient(45deg, #17262c, #0a1c24)'}} type="submit" value="Registration"  />
-                    </form>
-
-                   
-                    </div>
-                </Row>
-               </Container>}
-        </div>
+        {!isLoading && (
+          <Container>
+            <Row className="pt-5">
+              <div className="col-md-6">
+                <img className="img-fluid" src={regis} alt="" />
+              </div>
+              <div className="col-md-6">
+                <h3 style={{ color: "#0a1c24" }} className="mb-3">
+                  Please Register
+                </h3>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <input
+                    style={{
+                      border: "none",
+                      outline: "none",
+                      borderBottom: "2px solid #1e272c",
+                    }}
+                    className="mb-3"
+                    type="text"
+                    placeholder="Your name"
+                    {...register("name", { required: true, maxLength: 80 })}
+                  />{" "}
+                  <br />
+                  <input
+                    style={{
+                      border: "none",
+                      outline: "none",
+                      borderBottom: "2px solid #1e272c",
+                    }}
+                    className="mb-3"
+                    type="email"
+                    placeholder="Email"
+                    {...register("email", {
+                      required: true,
+                      pattern: /^\S+@\S+$/i,
+                    })}
+                  />{" "}
+                  <br />
+                  <input
+                    style={{
+                      border: "none",
+                      outline: "none",
+                      borderBottom: "2px solid #1e272c",
+                    }}
+                    className="mb-3"
+                    type="password"
+                    placeholder="Password"
+                    {...register("password", {
+                      required: true,
+                      maxLength: 100,
+                    })}
+                  />{" "}
+                  <br />
+                  <input
+                    style={{
+                      border: "none",
+                      outline: "none",
+                      borderBottom: "2px solid #1e272c",
+                    }}
+                    className="mb-3"
+                    type="password"
+                    placeholder="Re-type Password"
+                    {...register("password2", {
+                      required: true,
+                      maxLength: 100,
+                    })}
+                  />{" "}
+                  <br />
+                  <input
+                    className="my-3 py-2 btn btn-primary"
+                    style={{
+                      background: "linear-gradient(45deg, #17262c, #0a1c24)",
+                    }}
+                    type="submit"
+                    value="Registration"
+                  />
+                </form>
+              </div>
+            </Row>
+          </Container>
+        )}
+      </div>
     );
 };
 
