@@ -3,7 +3,7 @@ import React from 'react';
 const PayOrder = () => {
     return (
         <div>
-            <h3>Payment Order</h3>
+            <h3>Payment Order : Stripe Implement</h3>
         </div>
     );
 };
