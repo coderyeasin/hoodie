@@ -63,7 +63,10 @@ const Dashboard = () => {
                
                     <h3 className="my-3"> Welcome Mr. {user?.email ? user?.displayName : "Dashboard"} </h3> 
 
-                    
+                    {user && 
+                    <MyOrder />
+                    }
+                    {admin && <AddHoodie />}
                  <Outlet />
            </div>
         </Row>

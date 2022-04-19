@@ -120,7 +120,7 @@ const Header = () => {
 
                 {user?.email ? (
                   <div>
-                    <Link to="/dashboard">
+                    <Link to={`/dashboard`}>
                       <Button
                         className="neumophorism"
                         style={{
@@ -145,8 +145,7 @@ const Header = () => {
                       <FaUser className="text-light ms-2" />
                     </button>
                     <Modal
-                   
-                      classNames="mt-5 opacity-50 b" 
+                      classNames="mt-5 opacity-50 b"
                       open={open}
                       onClose={onCloseModal}
                       center
