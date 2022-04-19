@@ -51,7 +51,7 @@ function App() {
               <Route path="/dashboard/feedback" element={
                 <PrivateRoute> <Feedback></Feedback> </PrivateRoute>
               }></Route>
-              <Route path="/dashboard/payment" element={
+              <Route path="/dashboard/payment/:id" element={
                 <PrivateRoute> <PayOrder></PayOrder> </PrivateRoute>
               }></Route>
 
