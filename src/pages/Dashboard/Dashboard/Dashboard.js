@@ -62,11 +62,11 @@ const Dashboard = () => {
             <div className="col-md-9">
                
                     <h3 className="my-3"> Welcome Mr. {user?.email ? user?.displayName : "Dashboard"} </h3> 
-
+{/* 
                     {user && 
                     <MyOrder />
-                    }
-                    {admin && <AddHoodie />}
+                    } */}
+                    {/* {admin && <AddHoodie />} */}
                  <Outlet />
            </div>
         </Row>
