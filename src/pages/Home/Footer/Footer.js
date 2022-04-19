@@ -11,7 +11,7 @@ const Footer = () => {
     return (
         <div style={bgFooter}>
             <Container className=" py-5">
-                <Row className='d-flex justify-content-center align-items-center'>
+                <Row className='d-flex justify-content-center sm:align-items-center'>
                     <div className="col-md-1"></div>
                     <div className="col-md-3" style={{textAlign:'left', lineHeight:'30px'}}>
                     <h4 className="my-3"> Our Location </h4>
