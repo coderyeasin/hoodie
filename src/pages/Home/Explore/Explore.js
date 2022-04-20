@@ -39,10 +39,15 @@ const Explore = () => {
                       width="350px"
                       src={cloth?.image}
                     />
+                    <h3
+                      className="position-absolute bg-secondary text-light rounded px-3"
+                      style={{ margin: "20px 0px 0px 10px" }}
+                    >
+                      ${cloth?.price}
+                    </h3>
                     <Card.Body className="mx-auto ">
                       <Card.Title className="text-light">
-                        {" "}
-                        <H3>{cloth?.title}</H3>{" "}
+                        <H3>{cloth?.title}</H3>
                       </Card.Title>
                       <Card.Text
                         className="text-light w-100"
