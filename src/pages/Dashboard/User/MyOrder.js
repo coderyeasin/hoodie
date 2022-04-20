@@ -58,9 +58,9 @@ const MyOrder = () => {
                   <Button className="text-danger bg-light">X</Button>
                 </td>
                 <td>
-                  <Link to={`/dashboard/payment/${hoodie._id}`}>
+                    {!hoodie?.price ? "Paid" :                  <Link to={`/dashboard/payment/${hoodie._id}`}>
                                 <Button className="text-success bg-light">Pay - ${hoodie?.price}</Button>
-                  </Link>
+                  </Link>}
                 </td>
               </tr>
             </tbody>
