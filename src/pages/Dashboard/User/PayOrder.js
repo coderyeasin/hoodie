@@ -11,15 +11,7 @@ const PayOrder = () => {
       <div>
             <h3>Payment Order : Stripe Implement {id}</h3>
             
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <input {...register("firstName")} />
-          <select {...register("money")}>
-            <option value="yes">$sign</option>
-            <option value="no">male</option>
-            <option value="other">Test</option>
-          </select>
-          <input type="submit" />
-        </form>
+       
       </div>
     );
 };

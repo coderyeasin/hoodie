@@ -7,7 +7,8 @@ import { H3 } from '../../../styles/Elements';
 import './Hoodies.css';
 
 const Hoodies = () => {
-    const {place} = useHoddies()
+  const { place } = useHoddies()
+  console.log(place)
     const { isLoading } = useAuth()    
     
     return (
@@ -35,7 +36,7 @@ const Hoodies = () => {
                       width="350px"
                       src={cloth?.image}
                     />
-
+                    <h3 className='position-absolute bg-secondary right-0'> ${cloth?.price}</h3>
                     <Card.Body className="cool-btn">
                       <Card.Title className="text-light fs-4">
                         {cloth?.title}{" "}
