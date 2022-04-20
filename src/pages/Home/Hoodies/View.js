@@ -43,6 +43,7 @@ useEffect(() => {
    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
         data.status = "pending"
+        data.price = `${collect?.price}`
         console.log(data)
         fetch('https://warm-falls-65459.herokuapp.com/orders', {
             method: 'POST',
