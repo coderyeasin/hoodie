@@ -7,13 +7,15 @@ const PayOrder = () => {
     const { id } = useParams()
     const [order, setOrder] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:5000/orders/${id}`).then(res => res.json()).then(data => setOrder(data))
-    },[order])
+      fetch(`http://localhost:5000/orders/${id}`)
+        .then((res) => res.json())
+        .then((data) => setOrder(data));
+    }, [id]);
 
     return (
       <div>
-            <h3>Payment Order : Stripe Implement {id}</h3>
-            <h4>Pay this: ${order?.price}</h4>
+            <h3>Hi {order?.name}, Please pay for Best hoodie : {order?.serviceName}</h3>
+            <h4>Price: ${order?.price}</h4>
        
       </div>
     );
