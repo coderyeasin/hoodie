@@ -5,7 +5,9 @@ import { useForm } from "react-hook-form";
 import { useParams } from 'react-router-dom';
 import CheckoutForm from './CheckoutForm';
 
-const stripePromise = loadStripe("pk_test_6pRNASCoBOKtIshFeQd4XMUh");
+const stripePromise = loadStripe(
+  "pk_test_51Kr3TxDUJWidTH3EW86448cKHbYxOLeu0I73FWENGlWQB8fIJqvGgOpNLtrBIXSCghGKQEgjbDik769Z5ciLZhBS00uD1kFU6b"
+);
 
 const PayOrder = () => {
     const { id } = useParams()
