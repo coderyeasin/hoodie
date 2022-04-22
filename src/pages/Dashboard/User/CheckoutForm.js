@@ -1,10 +1,10 @@
 import React from 'react';
 
 
-const CheckoutForm = () => {
+const CheckoutForm = ({order}) => {
     return (
         <div>
-            <h3>Checkout</h3>
+            <h3>Checkout {order.price}</h3>
         </div>
     );
 };
