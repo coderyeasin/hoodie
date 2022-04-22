@@ -18,16 +18,29 @@ const CheckoutForm = ({ hoodie }) => {
         if (card === null) {
             return;
         }
+        //take price from user
+        const { error, paymentMethod } = await stripe.createPaymentMethod({
+            type:'card',
+            card,
+        })
+        if (error) {
+            console.log(error)
+        }
+        else {
+            console.log(paymentMethod)
+        }
+        
     }
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <CardElement
+          className="w-50 mx-auto my-5"
           options={{
             style: {
               base: {
                 fontSize: "16px",
-                color: "#424770",
+                color: "#ffffff",
                 "::placeholder": {
                   color: "#aab7c4",
                 },
