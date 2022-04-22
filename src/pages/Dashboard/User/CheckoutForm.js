@@ -4,10 +4,20 @@ import React from 'react';
 
 const CheckoutForm = ({ hoodie }) => {
     const stripe = useStripe()
-    const element = useElements()
-    
-    const handleSubmit = e => {
+    const elements = useElements()
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
+
+        //if not loaded yet
+        if (!stripe || !elements) {
+            return;
+        }
+        //if card blank
+        const card = elements.getElement(CardElement)
+        if (card === null) {
+            return;
+        }
     }
   return (
     <div>
