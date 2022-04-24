@@ -24,9 +24,11 @@ const PayOrder = () => {
           Hi {order?.name}, Please pay for Best hoodie : {order?.serviceName}
         </h3>
         <h4>Price: ${order?.price}</h4>
-        <Elements stripe={stripePromise}>
-          <CheckoutForm hoodie={order} />
-        </Elements>
+        {order?.price && (
+          <Elements stripe={stripePromise}>
+            <CheckoutForm hoodie={order} />
+          </Elements>
+        )}
       </div>
     );
 };
