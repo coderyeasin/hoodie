@@ -1,7 +1,6 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React, { useEffect, useState } from 'react';
-import { useForm } from "react-hook-form";
 import { useParams } from 'react-router-dom';
 import CheckoutForm from './CheckoutForm';
 
@@ -28,7 +27,7 @@ const PayOrder = () => {
           <Elements stripe={stripePromise}>
             <CheckoutForm hoodie={order} />
           </Elements>
-        )}
+         )}
       </div>
     );
 };
