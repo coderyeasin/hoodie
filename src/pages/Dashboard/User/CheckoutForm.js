@@ -5,7 +5,7 @@ import useAuth from '../../../Hooks/useAuth';
 
 
 const CheckoutForm = ({ hoodie }) => {
-    const { price, email} = hoodie;
+    const { price, email, _id} = hoodie;
     const {name} = useAuth()
     const stripe = useStripe()
     const elements = useElements()
@@ -75,6 +75,27 @@ const CheckoutForm = ({ hoodie }) => {
             setSuccess('Your payment process is successfully')
             console.log(paymentIntent)
             setProcessing(false)
+
+            //save to DB
+
+            const payment = {
+                amount: paymentIntent.amount,
+                created: paymentIntent.created,
+                last4: paymentMethod.card.last4,
+                transaction: paymentIntent.client_secret.slice('_secret')[0]
+                
+            }
+
+            const url = `http://localhost:5000/orders/${_id}`;
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'content-type':'application/json'
+                },
+                body: JSON.stringify(payment)
+            })
+                .then(res => res.json())
+            .then(data => console.log(data))
         }
     }
 
@@ -113,7 +134,7 @@ const CheckoutForm = ({ hoodie }) => {
               fontSize: "18px",
             }}
             type="submit"
-            disabled={!stripe}
+            disabled={!stripe || success}
           >
             Pay
           </button>
