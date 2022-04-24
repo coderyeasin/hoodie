@@ -7,22 +7,24 @@ const CheckoutForm = ({ hoodie }) => {
     const stripe = useStripe()
     const elements = useElements()
 
+    const [success, setSuccess] = useState('')
+    const [processing, setProcessing] = useState(false)
     const [error, setError] = useState("")
     const [clientSecret, setClientSecret] = useState("");
 
-    // useEffect(() => {
-    //   fetch("http://localhost:5000/create-payment-intent", {
-    //     method: "POST",
-    //     headers: {
-    //       "content-type": "application/json",
-    //     },
-    //     body: JSON.stringify({ price }),
-    //   }).then((res) => res.json())
-    //     .then((data) => {
-    //       // setClientSecret(data);
-    //       console.log(data);
-    //     });
-    // }, [price]);
+    useEffect(() => {
+      fetch("http://localhost:5000/create-payment-intent", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ price }),
+      }).then((res) => res.json())
+        .then((data) => {
+          setClientSecret(data.clientSecret);
+          console.log(data); // its keep a clientSecret so get them to use
+        });
+    }, [price]);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -51,6 +53,8 @@ const CheckoutForm = ({ hoodie }) => {
         }
         
     }
+
+    
   return (
     <div>
       <form onSubmit={handleSubmit}>
