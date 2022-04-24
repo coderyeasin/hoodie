@@ -1,9 +1,12 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import { Spinner } from 'react-bootstrap';
+import useAuth from '../../../Hooks/useAuth';
 
 
 const CheckoutForm = ({ hoodie }) => {
-    const { price } = hoodie;
+    const { price, } = hoodie;
+    const {name, email} = useAuth()
     const stripe = useStripe()
     const elements = useElements()
 
@@ -38,6 +41,7 @@ const CheckoutForm = ({ hoodie }) => {
         if (card === null) {
             return;
         }
+        setProcessing(true)
         //take price from user
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type:'card',
@@ -51,10 +55,30 @@ const CheckoutForm = ({ hoodie }) => {
             setError('')
             console.log(paymentMethod)
         }
-        
+
+        //payment intent
+        const { paymentIntent, error: intentError } =
+          await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+              card: card,
+              billing_details: {
+                name: name,
+                email: email,
+            },
+            },
+          });
+        if (intentError) {
+            setError(intentError.message);
+            setSuccess('')
+        } else {
+            setError('')
+            setSuccess('Your payment process is successfully')
+            console.log(paymentIntent)
+            setProcessing(false)
+        }
     }
 
-    
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -75,14 +99,32 @@ const CheckoutForm = ({ hoodie }) => {
             },
           }}
         />
-        <button style={{width:'80px', border:'0', padding:'5px 0px', borderRadius:'10px', fontSize:'18px'}} type="submit" disabled={!stripe}>
-          Pay
-        </button>
-          </form>
-          
-          {error && 
-              <p style={{color:'red', margin:'10px 0px'}}>{error} </p>
-          }
+        {processing ? (
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        ) : (
+          <button
+            style={{
+              width: "80px",
+              border: "0",
+              padding: "5px 0px",
+              borderRadius: "10px",
+              fontSize: "18px",
+            }}
+            type="submit"
+            disabled={!stripe}
+          >
+            Pay
+          </button>
+        )}
+      </form>
+
+      {error && <p style={{ color: "red", margin: "10px 0px" }}>{error} </p>}
+
+      {success && (
+        <p style={{ color: "green", margin: "10px 0px" }}>{success} </p>
+      )}
     </div>
   );
 };
