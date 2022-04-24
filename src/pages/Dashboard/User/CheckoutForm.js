@@ -5,8 +5,8 @@ import useAuth from '../../../Hooks/useAuth';
 
 
 const CheckoutForm = ({ hoodie }) => {
-    const { price, } = hoodie;
-    const {name, email} = useAuth()
+    const { price, email} = hoodie;
+    const {name} = useAuth()
     const stripe = useStripe()
     const elements = useElements()
 
